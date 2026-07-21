@@ -1,33 +1,24 @@
-# Session — chat-app — 2026-07-21
+# Task — Expo scaffold + auth gate foundation — 2026-07-21
 
-Tier 3. Continuously updated: after each promoted task, at every decision, and
-before any compaction. Promoted to project memory at session end.
+Tier 4. Working state for the CURRENT task only. Park bulk material (search
+results, long outputs, drafts) as files beside this one and reference by path.
 
-## Intent
+## Objective
 
-{why this session exists — from the session-goals file}
+Session goals 1-2: scaffold Expo RN app (TypeScript, Expo Router) in
+projects/chat-app; add auth gate (no chat surface without a session,
+persisted across restarts).
 
-## Goals file
+## Working state
 
-`.orchestrator/projects/tasks/chat-app/session-goals/(none yet)`
+- Complete; see Outcome.
 
-## Branch
+## Scratch files
 
-{session working branch}
+- /tmp scratchpad chat-scaffold (template source — disposable)
 
-## Decisions
+## Outcome
 
-- {timestamped decisions made this session}
-
-## Progress
-
-- {running log — one line per meaningful step}
-
-## Promoted task outcomes
-
-<!-- memory-promote.sh task appends here -->
-
-### 2026-07-21T20-22 — Task — Expo scaffold + auth gate foundation — 2026-07-21
 Goals 1, 2, 4, 5 of the session plan delivered and verified; goal 3 (live
 CometChat) built but gated.
 
