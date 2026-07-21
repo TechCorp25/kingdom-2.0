@@ -3,7 +3,7 @@
 Agreed 2026-07-21 (build prompt §9/§12). Changes to this file are themselves a
 HARD gate.
 
-## Inside the envelope (Fable may approve)
+## Inside the envelope (Fable may approve — as PR-readiness, never as a merge)
 
 - Kingdom-repo PRs: suite scaffolding, workflows, templates, docs, skills,
   agents, hook *additions/tightenings*, promoted state and reports, registry.
@@ -15,6 +15,8 @@ HARD gate.
 
 ## Outside the envelope (owner only — always)
 
+- **Merging to `main` in any repo** (kingdom or project) — the owner reviews
+  and performs every merge personally; their report-back triggers session close.
 - Secrets, API keys, tokens; anything that spends money; deployments.
 - Destructive/irreversible operations (force-push, history rewrite, repo or
   branch deletion with unmerged work, data deletion).

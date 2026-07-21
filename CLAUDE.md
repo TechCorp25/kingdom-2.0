@@ -68,8 +68,10 @@ Run: `automate-dev-suite/scripts/memory-promote.sh {task|session}`.
 - **Hard stop** — owner approval required. No bypass. (Secrets/keys, destructive
   or irreversible actions, spending, anything in `gates/gate-map.md` marked HARD.)
 - **Self-check** — a fresh-context **Fable** reviewer subagent approves in place
-  of the owner, within the risk envelope. The PR must be **opened before**
-  approval; every decision is recorded via `scripts/gate-record.sh`.
+  of the owner, within the risk envelope — for **PR readiness and continuation
+  only, never merges** (all `main` merges are the owner's, above). The PR must
+  be **opened before** approval; every decision is recorded via
+  `scripts/gate-record.sh`.
 - **Success/go** — objective checklist to keep moving toward session goals.
 
 Definitions, per-workflow map, and risk envelope: `automate-dev-suite/gates/`.
@@ -82,9 +84,12 @@ Definitions, per-workflow map, and risk envelope: `automate-dev-suite/gates/`.
 - Production-ready code only; no placeholder stubs. Preserve existing behavior —
   no breaking changes without explicit approval.
 - Secrets only in gitignored env files. Never in either repo layer.
-- Kingdom-level changes land by branch → PR on this repo; project changes by
-  branch → PR on the project repo. Squash-merge; delete source branch; never
-  force-push over a squash.
+- Every session works on a fresh per-session branch; kingdom-level changes
+  land by branch → PR on this repo, project changes by branch → PR on the
+  project repo. **The assistant never merges to `main` — the owner reviews and
+  squash-merges every PR personally, then reports back; that report-back
+  triggers the session-close workflow.** Delete source branch after the
+  owner's merge; never force-push over a squash.
 - Record keeping is not optional: hooks log activity; workflows write reports;
   gate decisions are always recorded.
 
