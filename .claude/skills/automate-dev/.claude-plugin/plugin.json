@@ -1,0 +1,6 @@
+{
+  "name": "automate-dev",
+  "version": "1.1.0",
+  "description": "Autonomous 8-phase build-review-test-fix-simplify-validate-ship loop with solo subagents (code-explorer, code-architect, code-reviewer) and Mode 3 agent-team escalation (team-lead, team-implementer, team-reviewer, team-debugger) via bundled /team-* and /feature-development commands. Includes script-based quality gates and token budget monitoring.",
+  "license": "Apache-2.0"
+}
