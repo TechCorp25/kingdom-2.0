@@ -1,5 +1,13 @@
 {
   "$schema": "./projects.schema.json",
   "updated": "2026-07-21",
-  "projects": []
+  "projects": [
+    {
+      "name": "pin-force",
+      "remote": "https://github.com/CivicMAPS/pin-force.git",
+      "created": "2026-07-21",
+      "status": "pilot",
+      "description": "CivicMAPS field-operations platform foundation; suite pilot project"
+    }
+  ]
 }
