@@ -1,0 +1,2 @@
+sync-check 2026-07-21T15:27:31
+! kingdom: main ahead=0 behind=0 · checked-out=build/04-workflows · dirty-files=16
