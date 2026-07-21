@@ -1,0 +1,2 @@
+{"ts": "2026-07-21T15:41:24", "class": "go", "workflow": "pilot-dry-run", "action": "goal 1: boundary .gitignore PR opened (CivicMAPS/pin-force#4), lifecycle steps 1-4 green", "decision": "go", "approver": "self", "notes": "dry-run per build prompt \u00a712.5", "project": "pin-force"}
+{"ts": "2026-07-21T15:41:24", "class": "hard", "workflow": "pilot-dry-run", "action": "merge CivicMAPS/pin-force#4", "decision": "pending", "approver": "owner", "notes": "project merges parked with kingdom stack until gate framework ratified (goals file gate notes)", "project": "pin-force"}

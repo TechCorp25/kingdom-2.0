@@ -1,4 +1,4 @@
-# Task — first task — 2026-07-21
+# Task — next task — 2026-07-21T15-41
 
 Tier 4. Working state for the CURRENT task only. Park bulk material (search
 results, long outputs, drafts) as files beside this one and reference by path.
