@@ -16,7 +16,6 @@
     ],
     "deny": [
       "Edit(//home/techcorp2024/kingdom/**)",
-      "Write(//home/techcorp2024/kingdom/**)",
       "Read(**/.env)",
       "Read(**/.env.*)",
       "Read(**/*.pem)",
