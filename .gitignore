@@ -1,0 +1,24 @@
+# ── Git boundary (DD-001) ────────────────────────────────────────────────
+# Nested project repos are NEVER tracked by the kingdom repo. Project code
+# syncs to each project's own remote. Per-project kingdom-synced state lives
+# at .orchestrator/projects/state/{project}/ (tracked here) and is symlinked
+# into each project as projects/{project}/.orchestrator and .claude.
+/projects/
+
+# ── Machine-local runtime state — never synced ──────────────────────────
+/.orchestrator/runtime/
+
+# ── Secrets ─────────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ── Machine-local Claude Code settings ──────────────────────────────────
+.claude/settings.local.json
+
+# ── OS / editor noise ───────────────────────────────────────────────────
+.DS_Store
+*.swp
+*~
