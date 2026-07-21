@@ -35,6 +35,19 @@ yet; those arrive via governance (ADRs under `docs/architecture/`).
 - Branches consume shared capabilities; application/domain forks are
   prohibited (README). Unowned `common`/`misc` dumping grounds prohibited.
 - Required local validation: `npm ci --ignore-scripts` + root `ci` script.
+- **Node 22 required** (`nvm use 22.22.1`) — from the recorded bootstrap run
+  (`~/.codex/memories/`, rollout 2026-07-19): the repo was bootstrapped and
+  SHA-validated under Node 22 via `bootstrap-civicmaps-repository.sh` +
+  `SHA256SUMS`; the remote baseline replacement was SHA-bound and
+  force-with-lease published. Use Node 22 for the Expo pilot.
+- CivicMAPS lineage (read-only v1 reference, upstream of this repo's
+  governance docs): `~/kingdom/projects/civic-maps-preview/docs/assesment/`
+  (Sections 01–04 authoritative foundation) and
+  `docs/development_records/authoritive-decision-records/`. Consult, never
+  modify; the approved copies inside THIS repo win where they overlap.
+- Stack boundary: CivicMAPS is Node/Express + PostgreSQL — never import
+  patterns from other kingdom projects' stacks
+  (`automate-dev-suite/docs/policies/stack-boundaries.md`).
 - Local working copy has a modified `.gitignore` (kingdom boundary block
   appended at adoption) — land it via the first project PR.
 
