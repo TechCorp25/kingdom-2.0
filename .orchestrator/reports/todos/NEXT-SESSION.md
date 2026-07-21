@@ -1,3 +1,3 @@
-- [x] 2026-07-21: OWNER ratified & merged kingdom stack (#1,#8,#3-#7) + CivicMAPS/pin-force#4 — Fable self-check now active for in-envelope merges
-- [ ] pin-force pilot goals 2-5: Expo test app scaffold -> EAS (keys = HARD stop at goal 5); plan: session-goals/2026-07-21T15-39-expo-pilot.md
-- [ ] live-wire validation: start CC from ~/kingdom-2.0 root and confirm hooks fire in a real session (guards tested standalone only)
+- [x] 2026-07-21: policy (owner-only main merges, PR #10) and v1-mitigation salvage (PR #11) merged by owner; gates-guard hook + docs/policies/ live
+- [ ] pin-force pilot goals 2-5: Expo test app scaffold -> EAS (Node 22 via nvm 22.22.1; keys = HARD stop at goal 5); plan: session-goals/2026-07-21T15-39-expo-pilot.md
+- [ ] live-wire validation: start CC from ~/kingdom-2.0 root and confirm hooks fire in a real session (now includes gates-guard; guards tested standalone only)
