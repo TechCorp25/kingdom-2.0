@@ -1,3 +1,4 @@
-- [x] 2026-07-21: policy (owner-only main merges, PR #10) and v1-mitigation salvage (PR #11) merged by owner; gates-guard hook + docs/policies/ live
-- [ ] pin-force pilot goals 2-5: Expo test app scaffold -> EAS (Node 22 via nvm 22.22.1; keys = HARD stop at goal 5); plan: session-goals/2026-07-21T15-39-expo-pilot.md
-- [ ] live-wire validation: start CC from ~/kingdom-2.0 root and confirm hooks fire in a real session (now includes gates-guard; guards tested standalone only)
+- [x] 2026-07-21: v1 salvage COMPLETE (#11 mitigations, #13 backup/playbooks/identity); owner-only-merge policy live (#10)
+- [ ] FIRST LIVE SESSION from ~/kingdom-2.0 root: hooks fire for real for the first time (session-start injection, sandbox-guard, gates-guard, logs) — treat as live-wire validation, watch for misfires
+- [ ] then pin-force pilot goals 2-5: Expo test app scaffold -> EAS (Node 22 via nvm 22.22.1; keys = HARD stop at goal 5); plan: session-goals/2026-07-21T15-39-expo-pilot.md
+- [ ] optional: run scripts/backup/snapshot-repos.sh before the machine handover when it comes
