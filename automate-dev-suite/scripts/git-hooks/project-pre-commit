@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Kingdom boundary guard (DD-001) — installed into every project repo as
+# .git/hooks/pre-commit by new-project.sh / adopt-project.sh.
+# Blocks any commit that stages kingdom-synced state or secret material.
+set -euo pipefail
+
+BLOCKED='^(\.orchestrator(/|$)|\.claude(/|$))|(^|/)(memory|session-goals)/.*\.md$|(^|/)\.env($|\.)|\.(pem|key)$'
+ALLOW_ENV_EXAMPLE='(^|/)\.env\.example$'
+
+violations=$(git diff --cached --name-only | grep -E "$BLOCKED" | grep -Ev "$ALLOW_ENV_EXAMPLE" || true)
+
+if [ -n "$violations" ]; then
+  echo "✗ Kingdom boundary violation — these staged paths sync via the KINGDOM repo (or are secrets) and may not be committed to a project repo:" >&2
+  echo "$violations" | sed 's/^/    /' >&2
+  echo "  See ~/kingdom-2.0/automate-dev-suite/docs/architecture/DD-001-git-boundary.md" >&2
+  exit 1
+fi
+exit 0
