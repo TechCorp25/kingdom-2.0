@@ -1,0 +1,72 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(automate-dev-suite/scripts/*)",
+      "Bash(git status*)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git branch*)",
+      "Bash(git fetch*)",
+      "Bash(git ls-files*)",
+      "Bash(gh pr list*)",
+      "Bash(gh pr view*)",
+      "Bash(gh repo view*)",
+      "Bash(ls*)",
+      "Bash(bash -n *)"
+    ],
+    "deny": [
+      "Edit(//home/techcorp2024/kingdom/**)",
+      "Write(//home/techcorp2024/kingdom/**)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/session-start.sh", "timeout": 20 }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash|Read|Grep|Glob",
+        "hooks": [
+          { "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/sandbox-guard.py", "timeout": 10 }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          { "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/activity-log.py", "timeout": 10 }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/pre-compact.sh", "timeout": 15 }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/session-end.sh", "timeout": 15 }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/subagent-log.py", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}
