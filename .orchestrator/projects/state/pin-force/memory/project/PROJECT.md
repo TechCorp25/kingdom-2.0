@@ -1,0 +1,51 @@
+# pin-force — project memory (Tier 2)
+
+## What this project is
+
+CivicMAPS **pin-force**: governed repository foundation for a
+multi-jurisdiction, multi-organisation public-sector field-operations platform
+(municipal-first). The current tree is the approved FOUNDATION ONLY — no
+runtime, framework, database, identity, GIS, or hosting decisions are approved
+yet; those arrive via governance (ADRs under `docs/architecture/`).
+
+## Durable facts
+
+- Remote: `https://github.com/CivicMAPS/pin-force.git` (private, default `main`)
+- Adopted into Kingdom v2 2026-07-21 via `adopt-project.sh`; **pilot project**
+  for the suite's end-to-end dry-run.
+- Node monorepo: `@civicmaps/platform`, workspaces `apps/*`, `services/*`,
+  `domains/*`, `packages/*`. Root scripts: `verify:structure`,
+  `validate:contracts`, `validate:deployment-wiring`, `security:baseline`,
+  `test`, `ci`.
+- Deployment manifest present but `enabled: false` (`deployment-adr-pending`).
+- **SHA verification (2026-07-21, §11 of the build prompt):**
+  - Section 01 `7a8a49b4…ec58` — MATCHES recorded baseline ✓
+  - Section 03 `922f2811…4699` — MATCHES recorded baseline ✓
+  - Section 02 actual `ffab7b9a…cb57` vs recorded source-candidate
+    `f18a976f…1628` — expected difference: the record is the pre-approval
+    source candidate; post-approval bytes were "verified separately" (guide
+    §17), and git confirms the file is untouched since bootstrap commit
+    `280e72f`. Provenance intact.
+
+## Conventions and constraints
+
+- Governance-first: approved source docs live under
+  `docs/governance/approved-source/` and are never edited casually; changes to
+  approved baselines are HARD-gated on the owner.
+- Branches consume shared capabilities; application/domain forks are
+  prohibited (README). Unowned `common`/`misc` dumping grounds prohibited.
+- Required local validation: `npm ci --ignore-scripts` + root `ci` script.
+- Local working copy has a modified `.gitignore` (kingdom boundary block
+  appended at adoption) — land it via the first project PR.
+
+## Pilot task (owner-defined, build prompt §11)
+
+Basic **Expo React Native test application** in working order, deployed via
+**EAS**, with full git workflow automations (branch → PR → checks → merge →
+deploy). Expo API keys/tokens are a HARD STOP: request from the owner at
+deployment, store only in gitignored env files — never in either repo layer.
+
+## Pointers
+
+- Reports: `.orchestrator/reports/` · Goals:
+  `~/kingdom-2.0/.orchestrator/projects/tasks/pin-force/session-goals/`
