@@ -9,11 +9,11 @@ Hard rules in `gates.md` §1 always apply on top of this map.
 | **Project bootstrap** — ff-pull / push / stash-and-branch | go |
 | Project history diverged | **HARD** |
 | Session remediation (promote crashed session) | go |
-| **Suite/kingdom PR merge** (scaffolding, workflows, docs, state) | self-check |
+| **PR readiness** — session work complete, checks green, PR opened/refreshed for the owner (kingdom or project) | self-check |
+| **Any merge to `main`** (kingdom or project repo) | **HARD** (owner-only, performed by the owner; owner's report-back triggers session close) |
 | Suite hook/permission changes (`.claude/settings.json`, guards) | self-check |
 | Weakening or removing a guard/gate/boundary rule | **HARD** |
-| **Project PR merge** — code within session goals, tests green | self-check |
-| Project PR touching auth, payments, data deletion, or migrations | **HARD** |
+| Project PR touching auth, payments, data deletion, or migrations | **HARD** (flag in the PR body for the owner's merge review) |
 | Dependency updates — patch/minor, lockfile clean | self-check |
 | Dependency updates — major version | **HARD** |
 | **New project creation** (repo on owner's GitHub, private) | self-check |

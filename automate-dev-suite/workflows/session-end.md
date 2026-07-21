@@ -1,7 +1,10 @@
 # Workflow — session end
 
-**Trigger:** owner ends the session, goals are met, or context compaction is
-imminent. **Gate class:** success/go; skipping promotion is a contract breach.
+**Trigger:** the owner reports back that the session's PR(s) are reviewed and
+merged; or the owner ends the session early; or goals are met with PRs handed
+over; or context compaction is imminent. **Gate class:** success/go; skipping
+promotion is a contract breach. (Merging to `main` is never part of this
+workflow — it is the owner's own action, upstream of it.)
 
 ## Steps
 

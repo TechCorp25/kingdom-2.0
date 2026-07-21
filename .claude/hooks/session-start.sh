@@ -18,9 +18,11 @@ echo "2. MANDATORY lifecycle: kingdom bootstrap -> numbered project selection"
 echo "   (scripts/select-project.sh) -> project bootstrap -> session-goals file."
 echo "   After selection the session is hook-sandboxed to that project."
 echo "3. Gates govern all work (automate-dev-suite/gates/): HARD = owner, SELF-CHECK = Fable"
-echo "   reviewer with PR opened first, SUCCESS/GO = objective checklist. Record every decision."
+echo "   reviewer with PR opened first (PR-readiness only), SUCCESS/GO = objective checklist."
+echo "   Record every decision. ALL merges to main are owner-only — never merge."
 echo "4. Promotion: memory-promote.sh task on task completion; session at close/pre-compact."
-echo "5. Kingdom changes: branch -> PR -> squash. Never commit to main. Secrets never in either repo layer."
+echo "5. All work on a fresh per-session branch -> PR. Owner reviews + merges main personally;"
+echo "   their report-back triggers session close. Secrets never in either repo layer."
 echo ""
 
 if [ "$SOURCE" = "compact" ]; then

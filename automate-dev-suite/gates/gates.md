@@ -13,12 +13,18 @@ is parked (recorded `pending`) and other in-envelope work continues.
 Always hard-stop, regardless of gate-map: secrets/API keys/tokens (request at
 point of use, store only in gitignored env files), destructive or irreversible
 actions, spending money, diverged git history resolution, anything
-outward-facing beyond the two governed repo layers.
+outward-facing beyond the two governed repo layers, and **any merge to `main`
+in either repo layer** — merging is performed by the owner personally after
+their own review of the PR; the assistant never merges to `main`. The owner
+reporting back that the merge is done is what triggers the session-close
+workflow (owner decision 2026-07-21).
 
 ## 2. Self-check stop gates — Fable approves in place of the owner
 
-Enables autonomous work where risk is contained. Protocol (all steps required,
-in order):
+Enables autonomous work where risk is contained. Self-check governs
+**PR readiness and continuation**, never merges: an APPROVE means the work is
+complete, verified, and handed to the owner as an open PR — the merge itself
+stays a hard gate. Protocol (all steps required, in order):
 
 1. The work is committed on its branch and its **PR is opened first** — the
    reviewer judges the same artifact the owner could see.
@@ -31,7 +37,8 @@ in order):
    logs the run automatically.
 5. Record the decision (`approved`/`rejected` + notes). REJECT → fix and
    re-run from step 1; approvals outside the envelope are void.
-6. Only then merge/proceed.
+6. Only then proceed (continue past the checkpoint / present the PR to the
+   owner as ready). Merging to `main` remains the owner's action in all cases.
 
 ## 3. Success / go gates — objective checkpoints
 
