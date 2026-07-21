@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kingdom project registry",
+  "type": "object",
+  "required": ["updated", "projects"],
+  "properties": {
+    "updated": { "type": "string", "description": "ISO date of last registry change" },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "remote", "created", "status"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+          "remote": { "type": "string", "description": "Project repo URL (its OWN remote, never the kingdom's)" },
+          "created": { "type": "string" },
+          "status": { "enum": ["active", "paused", "pilot", "archived"] },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}
