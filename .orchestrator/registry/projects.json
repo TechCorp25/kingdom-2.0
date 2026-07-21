@@ -8,6 +8,13 @@
       "created": "2026-07-21",
       "status": "pilot",
       "description": "CivicMAPS field-operations platform foundation; suite pilot project"
+    },
+    {
+      "name": "chat-app",
+      "remote": "https://github.com/TechCorp25/chat-app.git",
+      "created": "2026-07-21",
+      "status": "active",
+      "description": "Modern chat application \u2014 auth-gated users, CometChat integration, Expo React Native"
     }
   ]
 }
