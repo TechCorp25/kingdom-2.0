@@ -13,8 +13,12 @@ fail=0
 say() { printf '%s\n' "$*"; }
 
 # 1. Kingdom side — nothing under projects/ may be tracked.
-if tracked=$(git ls-files projects/ | head -5) && [ -n "$tracked" ]; then
-  say "✗ kingdom repo tracks files under projects/:"; say "$tracked" | sed 's/^/    /'; fail=1
+# Fail CLOSED: a git error here must read as a violation, not a pass
+# (fable-review finding, gates-2026-07 record for PR #1).
+if ! tracked=$(git ls-files projects/); then
+  say "✗ kingdom repo: git ls-files failed — cannot prove the boundary"; fail=1
+elif [ -n "$tracked" ]; then
+  say "✗ kingdom repo tracks files under projects/:"; say "$tracked" | head -5 | sed 's/^/    /'; fail=1
 else
   say "✓ kingdom repo tracks nothing under projects/"
 fi
