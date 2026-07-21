@@ -1,4 +1,3 @@
-- [ ] OWNER: review & merge kingdom-2.0 PRs #1-#7 in order (stack parked HARD; ratifying #5 activates Fable self-check for future merges)
-- [ ] OWNER: review & merge CivicMAPS/pin-force#4 (boundary .gitignore)
+- [x] 2026-07-21: OWNER ratified & merged kingdom stack (#1,#8,#3-#7) + CivicMAPS/pin-force#4 — Fable self-check now active for in-envelope merges
 - [ ] pin-force pilot goals 2-5: Expo test app scaffold -> EAS (keys = HARD stop at goal 5); plan: session-goals/2026-07-21T15-39-expo-pilot.md
 - [ ] live-wire validation: start CC from ~/kingdom-2.0 root and confirm hooks fire in a real session (guards tested standalone only)
