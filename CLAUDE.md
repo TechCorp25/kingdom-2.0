@@ -79,6 +79,10 @@ Definitions, per-workflow map, and risk envelope: `automate-dev-suite/gates/`.
 - Token-efficient by default: Grep/Glob over Read, Explore agent for breadth,
   batch independent calls, pointers over pasted dumps, task-tier files for bulk
   intermediate output.
+- v1's hard-won lessons are binding policy: `automate-dev-suite/docs/policies/`
+  (merge hygiene, python gotchas, token budget, secrets, stack boundaries,
+  confidential areas, context continuity). Gate files are hook-guarded; changes
+  go through `automate-dev-suite/gates/_proposals/` for owner promotion.
 - Production-ready code only; no placeholder stubs. Preserve existing behavior —
   no breaking changes without explicit approval.
 - Secrets only in gitignored env files. Never in either repo layer.
