@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "updated": "2026-07-21",
+  "updated": "2026-07-23",
   "projects": [
     {
       "name": "pin-force",
@@ -15,6 +15,13 @@
       "created": "2026-07-21",
       "status": "active",
       "description": "Modern chat application \u2014 auth-gated users, CometChat integration, Expo React Native"
+    },
+    {
+      "name": "studio-suite",
+      "remote": "https://github.com/TechCorp25/studio-suite.git",
+      "created": "2026-07-23",
+      "status": "active",
+      "description": "Studio Suite \u2014 cross-platform design system + application platform for Illuminate Studios (boutique editorial photography studio); React (web) + Expo React Native (mobile) monorepo"
     }
   ]
 }
