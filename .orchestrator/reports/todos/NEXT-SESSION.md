@@ -21,10 +21,20 @@
       PROJECT.md + project settings.json + first-sessions roadmap + Session-01 plan written;
       temp-directory-only consumed & deleted. BOTH PRs squash-merged & branches deleted by owner:
       kingdom #17 (main b957219), studio-suite #1 (main 1bef7c0).
-- [ ] studio-suite FIRST BUILD SESSION (ready to start): plan pre-authored at
-      `session-goals/2026-07-23T15-05-session-01-monorepo-baseline.md`
-      (roadmap: `session-goals/00-ROADMAP-first-sessions.md`) — monorepo/toolchain baseline.
-      If starting a LATER date, re-date the plan file (or session-goals.sh --create) so
-      project-bootstrap auto-selects it.
+- [x] 2026-07-23/24: studio-suite SESSION 01 (monorepo & toolchain baseline) COMPLETE & verified —
+      Node 22.22.1 / pnpm 11 workspaces (hoisted); `@illuminate/tokens` typechecks & is consumed by
+      both apps; web Vite skeleton at `apps/web/app/` (prototype left intact at `index.html`);
+      Expo/Metro boots + bundles the shared theme. Report: `reports/sessions/2026-07-23T22-16-session.md`.
+      PRs OPEN for owner review — project `session/2026-07-23-s01-monorepo-baseline`, kingdom
+      `session/2026-07-23-studio-suite-s01-monorepo-baseline`. Fable PR-readiness self-check PARKED
+      (out of credits). On owner merge + report-back: next bootstrap ff-reconciles + deletes branches.
+- [ ] studio-suite SESSION 02 (next build session): migrate the Babel-standalone prototype
+      (`apps/web/src/features/*.jsx`, `window.*` globals) into the Vite app at `apps/web/app/` —
+      real `import`/`export`, one feature domain at a time. Roadmap:
+      `session-goals/00-ROADMAP-first-sessions.md`.
+- [ ] 2026-07-24 (kingdom hygiene): a stray `memory-updater-temp-directory/` (cached Anthropic
+      agent-memory API docs, NOT project content) sat at the kingdom repo root during S01 bootstrap;
+      moved to session scratchpad (out of the repo). Confirm with owner it's disposable and find what
+      dropped it so it doesn't recur.
 - [ ] studio-suite SECURITY debt (Session 05, HARD gate): OpenAI/Luma key is embedded client-side
       → move behind a server proxy + rotate the key before any non-dev use.

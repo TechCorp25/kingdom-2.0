@@ -1,5 +1,5 @@
-sync-check 2026-07-23T20:10:44
-! kingdom: main ahead=0 behind=0 · checked-out=session/2026-07-23-studio-suite-close · dirty-files=3
+sync-check 2026-07-24T02:40:20
+! kingdom: main ahead=0 behind=0 · checked-out=session/2026-07-23-studio-suite-s01-monorepo-baseline · dirty-files=2
 ✓ pin-force: main ahead=0 behind=0 · checked-out=main · dirty-files=0
 ! chat-app: main ahead=0 behind=0 · checked-out=main · dirty-files=1
-✓ studio-suite: main ahead=0 behind=0 · checked-out=main · dirty-files=0
+✓ studio-suite: main ahead=0 behind=0 · checked-out=session/2026-07-23-s01-monorepo-baseline · dirty-files=0
