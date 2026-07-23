@@ -27,6 +27,35 @@ yet; those arrive via governance (ADRs under `docs/architecture/`).
     §17), and git confirms the file is untouched since bootstrap commit
     `280e72f`. Provenance intact.
 
+## Governance document structure (established 2026-07-23, PR #5 `b5d1b8f`)
+
+`docs/governance/` taxonomy (derived from the repo's own GS-000 Document
+Governance Framework — §4 hierarchy, §5 lifecycle states, §8.2 naming
+`CivicMAPS_[Class]_[Name]_v[MAJOR.MINOR.PATCH].md`):
+
+- `approved-source/` — approved programme specs (Sections 01-03 + SHA256SUMS). **HARD-gated.**
+- `standards/` — Formally Approved / Operative Governance Standards (GS-000, GS-001, GS-002, GS-003) + `SHA256SUMS` (verifiable; `sha256sum -c`).
+- `approvals/` — Formal Approval Records / Declarations.
+- `drafts/` — under-assessment / draft docs (kept as historical pre-approval records even after approval).
+- `templates/` — governance templates.
+- `assessments/` — commissioned Assessment Records (CMP-001..004 + transmittal).
+- `decisions/` — Decision Records (ODR risk-acceptance, decision-selection pack, S04 freeze proposal).
+- `baselines/{,approved/,superseded/}` — baseline artifacts; superseded records.
+- `requirements/` — (empty).
+
+Convention: a file cannot embed its own SHA; real hashes live in the external
+`SHA256SUMS` + the approval record's `approved_document.sha256`. GS-001 is the
+only standard frozen with real SHAs so far (`approved_document.sha256` ==
+`deaecb20..33b8`).
+
+OPEN governance follow-ups (owner):
+- GS-003 standard: missing opening `---` frontmatter fence AND filename `v2.0.0`
+  vs frontmatter `version: 1.0.0` — reconcile canonical version + repair fence.
+- GS-000/GS-002/GS-003 approval records still carry the `d41d8..`(empty-MD5)
+  placeholder digests — freeze them like GS-001 when ready.
+- GS-001 assessment-report + verification-package companion artifacts are not in
+  the repo (their digests are labelled PENDING in the approval record).
+
 ## Conventions and constraints
 
 - Governance-first: approved source docs live under

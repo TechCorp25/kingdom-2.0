@@ -1,0 +1,51 @@
+{"ts": "2026-07-21T20:22:21", "tool": "Bash", "target": "automate-dev-suite/scripts/memory-promote.sh task"}
+{"ts": "2026-07-21T20:22:38", "tool": "Bash", "target": "git -C /home/techcorp2024/kingdom-2.0 add .orchestrator/reports/gates/subagents.jsonl && git -C /home/techcorp2024/kingdom-2.0 commit -qm \"session 2026-07-21: chat-app session state \u2014 goals, task prom"}
+{"ts": "2026-07-21T20:34:29", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0/projects/chat-app && git fetch -p origin 2>&1 | tail -2; git log --oneline origin/main -3; git branch -a; echo \"=== kingdom ===\"; git -C /home/techcorp2024/kingdom-2."}
+{"ts": "2026-07-21T20:34:49", "tool": "Bash", "target": "git checkout main && git pull --ff-only 2>&1 | tail -1 && git branch -D session/2026-07-21-auth-chat-foundation && /home/techcorp2024/kingdom-2.0/automate-dev-suite/scripts/gate-record.sh hard project"}
+{"ts": "2026-07-21T20:35:03", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && npx --yes @cometchat/skills add 2>&1 | tail -20"}
+{"ts": "2026-07-21T20:35:15", "tool": "Bash", "target": "ls /home/techcorp2024/kingdom-2.0/.orchestrator/projects/state/chat-app/claude/skills/ 2>/dev/null && head -20 /home/techcorp2024/kingdom-2.0/.orchestrator/projects/state/chat-app/claude/skills/cometc"}
+{"ts": "2026-07-21T20:35:47", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && npx --yes @cometchat/skills-cli config show --json 2>&1 | tail -5; npx @cometchat/skills-cli detect --json 2>&1 | tail -20"}
+{"ts": "2026-07-21T20:35:57", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && npx @cometchat/skills-cli detect --json 2>&1 | head -30"}
+{"ts": "2026-07-21T20:36:06", "tool": "Bash", "target": "grep -n \"family\" /home/techcorp2024/kingdom-2.0/.orchestrator/projects/state/chat-app/claude/skills/cometchat/SKILL.md | grep -i -E \"install|add|react-native|rn\" | head -10"}
+{"ts": "2026-07-21T20:47:13", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0 && automate-dev-suite/scripts/select-project.sh 2 | head -2; echo \"=== project mirror ===\"; tail -3 .orchestrator/projects/state/chat-app/reports/gates/gates-2026-07."}
+{"ts": "2026-07-21T20:47:24", "tool": "Bash", "target": "automate-dev-suite/scripts/gate-record.sh hard project-secrets \"CometChat credentials wired into gitignored .env (app 1681081b01e3fd459 'chat-app', eu) via skills-cli provision setup\" approved owner \""}
+{"ts": "2026-07-21T20:47:41", "tool": "Write", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:48:26", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && cd /home/techcorp2024/kingdom-2.0/projects/chat-app && node scripts/smoke-cometchat.mjs 2>&1 | tail -10"}
+{"ts": "2026-07-21T20:48:44", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:49:05", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && node scripts/smoke-cometchat.mjs 2>&1 | tail -8"}
+{"ts": "2026-07-21T20:49:22", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:49:30", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && node scripts/smoke-cometchat.mjs 2>&1 | head -15"}
+{"ts": "2026-07-21T20:49:50", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && npm install --save-dev xhr2 --no-audit --no-fund 2>&1 | tail -1"}
+{"ts": "2026-07-21T20:49:55", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:50:03", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && node scripts/smoke-cometchat.mjs 2>&1 | head -10"}
+{"ts": "2026-07-21T20:50:18", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:50:33", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && SMOKE_DEBUG=1 node scripts/smoke-cometchat.mjs 2>&1 | head -14"}
+{"ts": "2026-07-21T20:50:43", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:51:09", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && SMOKE_DEBUG=1 node scripts/smoke-cometchat.mjs 2>&1 | head -14"}
+{"ts": "2026-07-21T20:51:24", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:51:34", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && node scripts/smoke-cometchat.mjs 2>&1 | head -10"}
+{"ts": "2026-07-21T20:51:44", "tool": "Bash", "target": "grep -v \"^!function\" /home/techcorp2024/.claude/projects/-home-techcorp2024-kingdom-2-0/3af1dc99-39d6-449a-8505-0bcd36e68fa7/tool-results/bidyv54d3.txt | grep -E \"Error|error|at \" | head -8"}
+{"ts": "2026-07-21T20:51:49", "tool": "Bash", "target": "tail -c 1200 /home/techcorp2024/.claude/projects/-home-techcorp2024-kingdom-2-0/3af1dc99-39d6-449a-8505-0bcd36e68fa7/tool-results/bidyv54d3.txt"}
+{"ts": "2026-07-21T20:52:02", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && node scripts/smoke-cometchat.mjs > /home/techcorp2024/.claude/jobs/3af1dc99/tmp/smoke.log 2>&1; awk 'length < 200' /home/techcorp2024/.claude/jobs/3af1"}
+{"ts": "2026-07-21T20:52:09", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:52:19", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && node scripts/smoke-cometchat.mjs > /home/techcorp2024/.claude/jobs/3af1dc99/tmp/smoke.log 2>&1; awk 'length < 200' /home/techcorp2024/.claude/jobs/3af1"}
+{"ts": "2026-07-21T20:52:25", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/projects/chat-app/scripts/smoke-cometchat.mjs"}
+{"ts": "2026-07-21T20:52:38", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && node scripts/smoke-cometchat.mjs > /home/techcorp2024/.claude/jobs/3af1dc99/tmp/smoke.log 2>&1; awk 'length < 200' /home/techcorp2024/.claude/jobs/3af1"}
+{"ts": "2026-07-21T20:53:20", "tool": "Bash", "target": "source ~/.nvm/nvm.sh && nvm use 22 >/dev/null && npx tsc --noEmit && echo \"tsc clean\" && git add -A && git status --porcelain && git commit -qm \"chore: live CometChat wiring \u2014 smoke test, .cometchat i"}
+{"ts": "2026-07-21T20:53:37", "tool": "Bash", "target": "gh pr create --repo TechCorp25/chat-app --head session/2026-07-21-cometchat-live --title \"Live CometChat wiring: credential smoke test + hygiene\" --body \"$(cat <<'EOF'\n## What\n\nFollow-up to #1 \u2014 prove"}
+{"ts": "2026-07-21T20:53:52", "tool": "Bash", "target": "/home/techcorp2024/kingdom-2.0/automate-dev-suite/scripts/gate-record.sh self-check project-pr \"chat-app PR #2 readiness \u2014 live CometChat wiring, smoke test + hygiene (https://github.com/TechCorp25/ch"}
+{"ts": "2026-07-21T20:54:19", "tool": "Bash", "target": "gh pr view 2 --repo TechCorp25/chat-app --json state,title,headRefName,baseRefName,url,isDraft 2>&1"}
+{"ts": "2026-07-21T20:54:20", "tool": "Bash", "target": "git status --short && git branch --show-current && git log --oneline -5"}
+{"ts": "2026-07-21T20:54:24", "tool": "Bash", "target": "gh pr view 2 --repo TechCorp25/chat-app --json body -q .body"}
+{"ts": "2026-07-21T20:54:27", "tool": "Bash", "target": "gh pr diff 2 --repo TechCorp25/chat-app"}
+{"ts": "2026-07-21T20:54:52", "tool": "Bash", "target": "gh pr view 2 --repo TechCorp25/chat-app --json headRefOid -q .headRefOid && git rev-parse HEAD && git ls-files | grep -E '^\\.env|cometchat/' ; echo \"---env-tracked-check-exit:$?\" ; git check-ignore -v"}
+{"ts": "2026-07-21T20:54:54", "tool": "Bash", "target": "ls -la .orchestrator .claude 2>&1 | head -5 && git ls-files | grep -E '^\\.(orchestrator|claude)' ; echo \"boundary-tracked-exit:$?\""}
+{"ts": "2026-07-21T20:54:54", "tool": "Bash", "target": "grep -n 'chat-app' /home/techcorp2024/kingdom-2.0/.orchestrator/projects/state/chat-app/reports/gates/gates-2026-07.jsonl 2>/dev/null | tail -8"}
+{"ts": "2026-07-21T20:55:10", "tool": "Bash", "target": "cat .env.example && echo \"---\" && key=$(grep EXPO_PUBLIC_COMETCHAT_AUTH_KEY .env | cut -d= -f2); if [ -z \"$key\" ]; then echo \"NO-KEY-IN-ENV\"; else git grep -l -F \"$key\" $(git rev-parse HEAD) >/dev/nul"}
+{"ts": "2026-07-21T20:55:24", "tool": "Bash", "target": "source ~/.nvm/nvm.sh >/dev/null 2>&1 && nvm use 22 >/dev/null 2>&1 && node --check scripts/smoke-cometchat.mjs && echo \"syntax-ok\" && npx tsc --noEmit && echo \"tsc-clean\""}
+{"ts": "2026-07-21T20:55:27", "tool": "Bash", "target": "/home/techcorp2024/kingdom-2.0/automate-dev-suite/scripts/boundary-verify.sh 2>&1 | tail -15"}
+{"ts": "2026-07-21T20:55:40", "tool": "Bash", "target": "source ~/.nvm/nvm.sh >/dev/null 2>&1 && nvm use 22 >/dev/null 2>&1 && node scripts/smoke-cometchat.mjs 2>&1"}
+{"ts": "2026-07-21T20:55:41", "tool": "Bash", "target": "ls /home/techcorp2024/kingdom-2.0/.orchestrator/projects/tasks/chat-app/session-goals/ 2>/dev/null && grep -n -i -A3 'goal 3\\|cometchat' /home/techcorp2024/kingdom-2.0/.orchestrator/projects/tasks/cha"}
+{"ts": "2026-07-21T20:55:46", "tool": "Bash", "target": "source ~/.nvm/nvm.sh >/dev/null 2>&1 && nvm use 22 >/dev/null 2>&1 && npm ls @cometchat/chat-sdk-javascript xhr2 --depth=0 2>&1 | head -6"}
+{"ts": "2026-07-21T20:56:50", "tool": "Bash", "target": "/home/techcorp2024/kingdom-2.0/automate-dev-suite/scripts/gate-record.sh self-check project-pr \"chat-app PR #2 readiness \u2014 live CometChat wiring, smoke test + hygiene (https://github.com/TechCorp25/ch"}
+{"ts": "2026-07-21T20:57:06", "tool": "Write", "target": "/home/techcorp2024/kingdom-2.0/.orchestrator/projects/state/chat-app/memory/project/session/task/TASK.md"}

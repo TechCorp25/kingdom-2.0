@@ -1,4 +1,4 @@
-# Session — pin-force — next-session
+# Session — pin-force — {started}
 
 Tier 3. Continuously updated: after each promoted task, at every decision, and
 before any compaction. Promoted to project memory at session end.
@@ -9,7 +9,7 @@ before any compaction. Promoted to project memory at session end.
 
 ## Goals file
 
-`.orchestrator/projects/tasks/pin-force/session-goals/2026-07-21T15-39-expo-pilot.md`
+`.orchestrator/projects/tasks/pin-force/session-goals/{goals-file}`
 
 ## Branch
 
