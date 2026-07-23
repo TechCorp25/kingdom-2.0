@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)"
+    ],
+    "allow": [
+      "Bash(pnpm:*)",
+      "Bash(npm run:*)",
+      "Bash(npm ci)",
+      "Bash(npm install)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "Bash(npx playwright:*)",
+      "Bash(node:*)",
+      "Bash(expo start:*)",
+      "Bash(expo prebuild:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ]
+  }
+}
