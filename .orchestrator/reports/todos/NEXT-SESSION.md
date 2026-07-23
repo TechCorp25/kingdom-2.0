@@ -16,14 +16,15 @@
       plus sync/subagent append-logs) were STASHED on kingdom (`git stash@{0}`) during the
       studio-suite prep session — pop & reconcile in chat-app's next bootstrap. NOTE the corrective
       gate record: chat-app PR #2 was still OPEN (not merged) as of 2026-07-21T21:38.
-- [x] 2026-07-23: studio-suite NEW-PROJECT PREP COMPLETE — created via new-project.sh (private
-      remote TechCorp25/studio-suite, registered #3); v2.0 prototype monorepo seeded (project
-      PR #1 OPEN — owner merge); PROJECT.md + project settings.json + first-sessions roadmap +
-      Session-01 plan written; temp-directory-only consumed & deleted.
-- [ ] studio-suite FIRST BUILD SESSION: plan pre-authored at
+- [x] 2026-07-23: studio-suite NEW-PROJECT PREP COMPLETE & CLOSED — created via new-project.sh
+      (private remote TechCorp25/studio-suite, registered #3); v2.0 prototype monorepo seeded;
+      PROJECT.md + project settings.json + first-sessions roadmap + Session-01 plan written;
+      temp-directory-only consumed & deleted. BOTH PRs squash-merged & branches deleted by owner:
+      kingdom #17 (main b957219), studio-suite #1 (main 1bef7c0).
+- [ ] studio-suite FIRST BUILD SESSION (ready to start): plan pre-authored at
       `session-goals/2026-07-23T15-05-session-01-monorepo-baseline.md`
-      (roadmap: `session-goals/00-ROADMAP-first-sessions.md`). If starting a LATER date, re-date
-      the plan file (or session-goals.sh --create) so project-bootstrap auto-selects it.
-      FIRST: owner merges project PR #1 (seed import).
+      (roadmap: `session-goals/00-ROADMAP-first-sessions.md`) — monorepo/toolchain baseline.
+      If starting a LATER date, re-date the plan file (or session-goals.sh --create) so
+      project-bootstrap auto-selects it.
 - [ ] studio-suite SECURITY debt (Session 05, HARD gate): OpenAI/Luma key is embedded client-side
       → move behind a server proxy + rotate the key before any non-dev use.
