@@ -25,3 +25,7 @@
 {"ts": "2026-07-23T20:08:16", "tool": "Write", "target": "/home/techcorp2024/kingdom-2.0/.orchestrator/projects/state/studio-suite/memory/project/session/SESSION.md"}
 {"ts": "2026-07-23T20:08:29", "tool": "Edit", "target": "/home/techcorp2024/kingdom-2.0/.orchestrator/reports/todos/NEXT-SESSION.md"}
 {"ts": "2026-07-23T20:08:42", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\necho \"=== kingdom status (close-out changes) ===\"\ngit status --short\necho\necho \"=== confirm the merged prep branch is in origin/main history ===\"\ngit branch --show-cu"}
+{"ts": "2026-07-23T20:09:16", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\ngit add .orchestrator/projects/state/studio-suite/ \\\n        .orchestrator/reports/gates/subagents.jsonl \\\n        .orchestrator/reports/todos/NEXT-SESSION.md\ngit com"}
+{"ts": "2026-07-23T20:10:25", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\necho \"=== push kingdom close branch ===\"\ngit push -u origin session/2026-07-23-studio-suite-close 2>&1 | tail -3\necho\necho \"=== reconcile studio-suite project repo =="}
+{"ts": "2026-07-23T20:10:52", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\ngh pr create --repo TechCorp25/kingdom-2.0 --base main --head session/2026-07-23-studio-suite-close \\\n  --title \"studio-suite: session close (memory promotion + todos"}
+{"ts": "2026-07-23T20:11:39", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\ngit status --short"}
