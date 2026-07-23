@@ -17,16 +17,24 @@ personas: public visitor, assigned client, studio admin.
 ## Durable facts
 
 - **Remote:** https://github.com/TechCorp25/studio-suite.git (private, TechCorp25)
-- **Stack:** full-stack **monorepo** — `packages/tokens` (`@illuminate/tokens`, the
-  cross-platform TS source of truth: `tokens.ts` + `illuminate-design-spec.json`) →
-  `apps/web` (React) + `apps/mobile` (Expo React Native). Node 22 (via nvm), like the
-  suite's other RN work.
-- **Web build state:** currently a **zero-build React + Babel-standalone prototype**
-  (open `apps/web/index.html` directly; multi-file JSX sharing state via `window.*`).
-  Target is **Vite + React + TS** — `src/features/*` already matches that layout, so
-  migration is mechanical (`window.*` → real `import`/`export`).
-- **Mobile build state:** Expo RN app is **scaffolded only** — shared tokens + theme
-  provider (`useTokens`) wired; feature screens, navigation, font loading still to build.
+- **Stack:** full-stack **pnpm-workspace monorepo** — `packages/tokens`
+  (`@illuminate/tokens`, the cross-platform TS source of truth: `tokens.ts` +
+  `illuminate-design-spec.json`) → `apps/web` (React) + `apps/mobile` (Expo React Native).
+- **Toolchain (baselined Session 01):** Node **22.22.1** via nvm (`.nvmrc`=22; machine
+  default is v24, so `nvm use 22` each session). **pnpm 11** (corepack, `packageManager`
+  pinned). Config lives in `pnpm-workspace.yaml` (NOT `.npmrc` — pnpm 11 ignores it):
+  `nodeLinker: hoisted` (RN/Metro needs flat node_modules), `allowBuilds: esbuild`,
+  `supportedArchitectures: current`. Apps depend on tokens via **`workspace:*`**. Scripts:
+  root `pnpm typecheck` (`-r`), `pnpm web`, `pnpm mobile`; each pkg has `typecheck`.
+- **Web build state:** **two entrypoints coexist.** (a) The zero-build **Babel-standalone
+  prototype** stays at `apps/web/index.html` (multi-file `src/**/*.jsx` via `window.*`) —
+  still the working app. (b) A real **Vite + React + TS skeleton** now lives isolated at
+  `apps/web/app/` (`root: "app"` in `vite.config.ts`; imports `@illuminate/tokens`).
+  Session 02 migrates `src/features/*.jsx` (`window.*` → real imports) into the Vite app.
+- **Mobile build state:** Expo RN app **boots** — `metro.config.js` wires the monorepo
+  (watchFolders = workspace root); `expo export` bundles the full graph consuming the
+  shared theme via `ThemeProvider`/`useTokens`. Feature screens, navigation, font loading
+  still to build.
 - **Design language:** "editorial luxury" — brass gold + navy ink on cool off-white
   (Light = default UI); cinematic black/cream/gold "lights-out" Dark **reserved** for
   gallery viewing only, gated by `darkAllowed`. Gold is the only brand accent
