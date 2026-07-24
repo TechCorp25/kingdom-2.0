@@ -12,3 +12,7 @@
 {"ts": "2026-07-24T02:39:44", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\ngit push -u origin session/2026-07-23-studio-suite-s01-monorepo-baseline 2>&1 | tail -6"}
 {"ts": "2026-07-24T02:40:08", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\ncat > /tmp/claude-1000/-home-techcorp2024-kingdom-2-0/f750f349-77b4-46e3-8a64-b1dda54ee67e/scratchpad/king-pr.md <<'EOF'\n## studio-suite Session 01 close \u2014 monorepo b"}
 {"ts": "2026-07-24T02:40:26", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\necho \"=== what's uncommitted ===\"; git status --short\necho \"=== final sync-check (all layers) ===\"\nautomate-dev-suite/scripts/sync-check.sh 2>&1"}
+{"ts": "2026-07-24T02:40:53", "tool": "Bash", "target": "cd /home/techcorp2024/kingdom-2.0\ngit add -A\ngit commit -m \"$(cat <<'EOF'\nchore(studio-suite): session-close trailing append-logs + sync report\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"}
+{"ts": "2026-07-24T02:41:27", "tool": "Bash", "target": "cd /home/techcorp2024/.claude/projects/-home-techcorp2024-kingdom-2-0/memory/ 2>/dev/null && { echo \"=== MEMORY.md ===\"; cat MEMORY.md 2>/dev/null || echo \"(no MEMORY.md yet)\"; echo; echo \"=== existin"}
+{"ts": "2026-07-24T02:41:56", "tool": "Write", "target": "/home/techcorp2024/.claude/projects/-home-techcorp2024-kingdom-2-0/memory/pnpm11-rn-expo-monorepo.md"}
+{"ts": "2026-07-24T02:42:02", "tool": "Write", "target": "/home/techcorp2024/.claude/projects/-home-techcorp2024-kingdom-2-0/memory/MEMORY.md"}

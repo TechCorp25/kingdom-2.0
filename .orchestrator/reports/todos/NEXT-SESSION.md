@@ -25,13 +25,22 @@
       Node 22.22.1 / pnpm 11 workspaces (hoisted); `@illuminate/tokens` typechecks & is consumed by
       both apps; web Vite skeleton at `apps/web/app/` (prototype left intact at `index.html`);
       Expo/Metro boots + bundles the shared theme. Report: `reports/sessions/2026-07-23T22-16-session.md`.
-      PRs OPEN for owner review — project `session/2026-07-23-s01-monorepo-baseline`, kingdom
-      `session/2026-07-23-studio-suite-s01-monorepo-baseline`. Fable PR-readiness self-check PARKED
-      (out of credits). On owner merge + report-back: next bootstrap ff-reconciles + deletes branches.
-- [ ] studio-suite SESSION 02 (next build session): migrate the Babel-standalone prototype
-      (`apps/web/src/features/*.jsx`, `window.*` globals) into the Vite app at `apps/web/app/` —
-      real `import`/`export`, one feature domain at a time. Roadmap:
-      `session-goals/00-ROADMAP-first-sessions.md`.
+      BOTH PRs squash-merged + branches deleted by owner: studio-suite #2 (main `83ffd1e`),
+      kingdom #19 (main `2b90512`). Local mains fast-forwarded, session branches deleted, refs
+      pruned (2026-07-24). Fable PR-readiness self-check was PARKED (out of credits).
+- [ ] studio-suite SESSION 02 — **READY TO START**: plan pre-authored at
+      `session-goals/2026-07-24T09-56-session-02-web-vite-migration.md`
+      (roadmap: `session-goals/00-ROADMAP-first-sessions.md`) — web Babel-standalone →
+      Vite + React + TS migration to **feature parity** (8 surfaces), typecheck clean, no
+      visual regressions. **FIRST DECISION (blocks the rest):** reconcile the directory layout —
+      S01's Vite root is `apps/web/app/` while prototype sources are `apps/web/src/**`;
+      options + recommendation are in the plan.
+      If starting a LATER date, re-date the plan file so project-bootstrap auto-selects it.
+- [ ] studio-suite OWNER DECISIONS pending for S02: (a) retire/delete the Babel-standalone
+      prototype `apps/web/index.html` once parity lands? (the assistant will NOT delete it
+      unilaterally); (b) **Vite 5 → 6** — dependabot branch `dependabot/npm_and_yarn/vite-6.4.3`
+      is open on studio-suite and overlaps S02's surface area; decide before migrating.
+      Also 3 dependabot vulns on `main` (1 high, 2 moderate) → schedule a dependency audit.
 - [ ] 2026-07-24 (kingdom hygiene): a stray `memory-updater-temp-directory/` (cached Anthropic
       agent-memory API docs, NOT project content) sat at the kingdom repo root during S01 bootstrap;
       moved to session scratchpad (out of the repo). Confirm with owner it's disposable and find what
