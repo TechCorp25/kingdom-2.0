@@ -38,3 +38,13 @@
       dropped it so it doesn't recur.
 - [ ] studio-suite SECURITY debt (Session 05, HARD gate): OpenAI/Luma key is embedded client-side
       → move behind a server proxy + rotate the key before any non-dev use.
+- [ ] 2026-07-25 (OWNER ACTION): common-ground integrated as a CC-native capability — skill,
+      `scripts/common-ground.sh`, workflow, port record `docs/build/003-common-ground-port.md`.
+      Additive only; no existing file modified. **Gate rows are still a PROPOSAL** — promote with
+      `git mv automate-dev-suite/gates/_proposals/2026-07-25T08-46-44-gate-map.md \
+       automate-dev-suite/gates/gate-map.md` (that git mv IS the approval). Until then unlisted
+      actions default to HARD, so every assumption write will prompt. Kingdom PR open for review.
+- [ ] 2026-07-25 (kingdom hygiene): DD-001:56 says `boundary-verify.sh` runs at kingdom bootstrap
+      and session end — it is NOT implemented in either workflow (only new-project/adopt-project/
+      bootstrap-machine invoke it). Either wire it in or correct DD-001. Found during the
+      common-ground invariants audit.
