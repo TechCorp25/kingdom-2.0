@@ -21,9 +21,15 @@ of truth and `COMMON-GROUND.md` is regenerated, never hand-edited.
    with `common-ground.sh add` / `tier <ID> <TIER> "<reason>"`. Type is
    immutable; tier changes need owner confirmation.
 4. **`--list`** → `common-ground.sh list [--tier T]` · **`--check`** → present the
-   summary, then `validate` if confirmed, else re-enter step 3.
+   summary, then `validate` if confirmed, else re-enter step 3. Superseded
+   assumptions go to `archive <ID> "<reason>"` — never delete one.
 5. **`--graph`** → build the mermaid per `references/reasoning-graph.md`, then
    `common-ground.sh graph --file <path>`; never drop alternative branches.
 
 Storage layout, formats, and error handling: `references/ground-file-management.md`.
-Recording assumptions is `go`-class; shipping changes to this skill is self-check.
+Full procedure: `automate-dev-suite/workflows/common-ground.md`.
+
+**Gate class:** a `go` row for recording assumptions is *proposed* at
+`gates/_proposals/2026-07-25T08-46-44-gate-map.md` but is **not live** until the
+owner promotes it. Until then these actions are unlisted, so run `gate-check`
+and treat them as HARD. Changes to this skill or its script are self-check.

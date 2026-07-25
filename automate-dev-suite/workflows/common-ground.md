@@ -5,8 +5,10 @@ they drive work, and keep them as durable, owner-validated project state.
 **Trigger points:** intake · before planning · mid-execution when work feels
 misaligned · when the owner asks what Claude is assuming · alongside project
 bootstrap on a resumed session.
-**Gate class:** success/go for recording assumptions (file I/O only); self-check
-for shipping changes to the skill or script itself.
+**Gate class:** a success/go row for recording assumptions is *proposed* at
+`gates/_proposals/2026-07-25T08-46-44-gate-map.md` and is **not live** until the
+owner promotes it — until then these actions are unlisted and take the HARD
+default (`gate-check` skill). Changes to the skill or script are self-check.
 
 ## Steps
 

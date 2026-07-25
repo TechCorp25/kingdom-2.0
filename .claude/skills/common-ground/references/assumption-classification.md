@@ -66,7 +66,11 @@ Record every transition through the script so it lands in the history table:
 
 ```bash
 automate-dev-suite/scripts/common-ground.sh tier A001 ESTABLISHED "owner confirmed"
+automate-dev-suite/scripts/common-ground.sh archive A001 "superseded by A007"
 ```
+
+Archiving moves an assumption out of the active tiers into the `Archived` table
+while keeping its full history. The ID is retired and never reissued.
 
 ---
 

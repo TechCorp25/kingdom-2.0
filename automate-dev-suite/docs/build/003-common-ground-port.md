@@ -35,7 +35,7 @@ there was no MCP, no network call, no database, no daemon, and no `jq`, `curl`,
 
 | Externality | Conversion | Rationale |
 |---|---|---|
-| State in `~/.claude/common-ground/{project_id}/` | `.orchestrator/projects/state/{p}/patterns/common-ground/` | Home-dir state escapes both git layers and every guard. `sandbox-guard.py` only resolves projects under `projects/` and `.orchestrator/projects/state/` — a kingdom-global path returns `None` from `project_of()` and gets **no sandbox check at all**. `patterns/` is the pre-approved slot in the DD-001 boundary table. |
+| State in `~/.claude/common-ground/{project_id}/` | `.orchestrator/projects/state/{p}/patterns/common-ground/` | Home-dir state escapes both git layers and every guard. `sandbox-guard.py` only resolves projects under `projects/` and `.orchestrator/projects/state/` — a kingdom-global path returns `None` from `project_of()` and gets **no sandbox check at all**. `patterns/` is the pre-approved slot in the DD-001 boundary table. Coverage caveat: this buys the **file-tool** arm of the guard, not the Bash arm — see "Guard defect raised" below. |
 | `git remote get-url origin` + URL normalisation | Registry `name` + session binding | Registry names already match `^[a-z0-9][a-z0-9-]*$`, so they are filesystem-safe and unique by construction. The normalisation algorithm becomes unnecessary. |
 | `pwd` fallback → `local/{munged-path}` | Removed — unbound is an error | A silent fallback would write state for an unregistered project outside sandbox enforcement. Fail closed. |
 | Global `index.md` project registry | Dropped | `projects.json` already is the registry; a second one duplicates state (DD-004 principle 4). |
@@ -74,8 +74,9 @@ half-written index or truncated ground file.
 rows are a **proposal** at
 `automate-dev-suite/gates/_proposals/2026-07-25T08-46-44-gate-map.md`.
 
-Until the owner promotes it, unlisted actions default to HARD (`gates.md` §1) —
-safe, but it will prompt on every assumption write. Promote with:
+Until the owner promotes it the action is unlisted, and `gate-check` resolves an
+unlisted action to the nearest listed analogue or HARD — safe, but it will prompt
+on every assumption write. Promote with:
 
 ```bash
 git mv automate-dev-suite/gates/_proposals/2026-07-25T08-46-44-gate-map.md \
@@ -94,3 +95,28 @@ appends to on its own. No pre-existing file's checksum changed.
 Note for anyone re-running that snapshot: it must not use `python3 -m py_compile`
 to syntax-check the hooks — that writes `__pycache__/` into `.claude/hooks/` and
 mutates the very tree being measured. Use `ast.parse` instead.
+
+## Guard defect raised (pre-existing — not introduced here)
+
+`sandbox-guard.py`'s **Bash** arm does not protect
+`.orchestrator/projects/state/{p}/…`. The regex at `sandbox-guard.py:80` matches
+non-overlapping, so on that path it consumes `projects/state` and captures
+`"state"` — never the project name — and the cross-project denial never fires:
+
+```
+.orchestrator/projects/state/chat-app/…  →  ['state']      (no denial)
+projects/chat-app/…                      →  ['chat-app']   (denial works)
+```
+
+The **file-tool** arm (Write/Edit/Read/Grep/Glob) is unaffected and denies
+correctly. `memory-promote.sh:12` carries the same `--project` override and is
+exposed the same way, so this is a general gap rather than anything specific to
+common-ground.
+
+Mitigation taken here: `common-ground.sh` refuses a `--project` that contradicts
+the session binding, in the script itself, instead of relying on the guard.
+
+Fixing the guard is a HARD-gated change (`gate-map.md`: "Weakening or removing a
+guard/gate/boundary rule"; tightening one still touches guard code), so it is
+**left for the owner** and carried in `NEXT-SESSION.md` rather than patched in
+this PR.

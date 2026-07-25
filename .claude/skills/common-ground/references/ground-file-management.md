@@ -14,7 +14,7 @@ derived identity by shelling out to git. Both are gone.
 
 | Upstream | Kingdom | Reason |
 |---|---|---|
-| `~/.claude/common-ground/{project_id}/` | `.orchestrator/projects/state/{p}/patterns/common-ground/` | Home-dir state escapes both git layers and the sandbox guard. State under `state/{p}/` is tracked, rides kingdom PRs, and `sandbox-guard.py` enforces the project boundary on it for free. `patterns/` is the pre-approved slot in the DD-001 boundary table. |
+| `~/.claude/common-ground/{project_id}/` | `.orchestrator/projects/state/{p}/patterns/common-ground/` | Home-dir state escapes both git layers entirely and every guard. State under `state/{p}/` is tracked, rides kingdom PRs, and is covered by `sandbox-guard.py`'s **file-tool** arm. `patterns/` is the pre-approved slot in the DD-001 boundary table. |
 | `git remote get-url origin`, then URL normalisation | `.orchestrator/registry/projects.json` + the session binding in `.orchestrator/runtime/current-session.json` | Removes both shell-outs. Registry names already match `^[a-z0-9][a-z0-9-]*$`, so they are filesystem-safe and unique by construction — the whole normalisation algorithm is unnecessary. |
 | `pwd` fallback → `local/...` id | *(none — unbound is an error)* | A pwd fallback would silently write state for an unregistered project, outside sandbox enforcement. Failing closed is the kingdom default. |
 | Global `~/.claude/common-ground/index.md` registry | *(dropped)* | `projects.json` already is the project registry. A second one duplicates state and violates DD-004 principle 4. |
@@ -49,12 +49,27 @@ automate-dev-suite/scripts/common-ground.sh path
 Identity is the registry `name` of the bound project — nothing is derived, parsed,
 or normalised. The script resolves it in this order:
 
-1. `--project <name>` when explicitly passed.
-2. `["project"]` from `.orchestrator/runtime/current-session.json` (set by
-   `select-project.sh`).
+1. `["project"]` from `.orchestrator/runtime/current-session.json` (set by
+   `select-project.sh`) — this always wins.
+2. `--project <name>`, honoured **only when no session is bound**.
 3. Otherwise **exit 1** with instructions. There is no fallback.
 
-Any name that is not in `.orchestrator/registry/projects.json` is rejected.
+Any name that is not in `.orchestrator/registry/projects.json` is rejected, which
+is also what stops path traversal through `--project`.
+
+> **Why the script enforces the binding itself rather than trusting the guard.**
+> `sandbox-guard.py` has two arms. Its **file-tool** arm (Write/Edit/Read/Grep/Glob)
+> correctly denies cross-project access to this tree. Its **Bash** arm does not:
+> the regex at `sandbox-guard.py:80` matches non-overlapping, so on
+> `.orchestrator/projects/state/{p}/…` it consumes `projects/state` and yields
+> `"state"` — never the project name — and no denial fires. This script writes via
+> Bash, so it would be uncovered. It therefore refuses a `--project` that
+> contradicts the binding, in the script itself.
+>
+> That regex is a **pre-existing guard defect**, not one this capability
+> introduced, and `memory-promote.sh` carries the same `--project` override. Fixing
+> a guard is a HARD-gated change, so it is raised for the owner separately rather
+> than patched here.
 
 ---
 
@@ -126,6 +141,7 @@ content, mutate the index through the script and let it re-render.
 | Create / repair state | `common-ground.sh init` |
 | Add an assumption | `common-ground.sh add --title T --type X --tier Y --assumption A [--source S] [--context C] [--reason R]` |
 | Promote / demote | `common-ground.sh tier A001 ESTABLISHED "owner confirmed"` |
+| Retire a superseded one | `common-ground.sh archive A001 "superseded by X"` |
 | Mark all still valid | `common-ground.sh validate` |
 | Read-only view | `common-ground.sh list [--tier ESTABLISHED]` |
 | Counts only | `common-ground.sh summary` |
@@ -133,10 +149,18 @@ content, mutate the index through the script and let it re-render.
 | Embed a reasoning graph | `common-ground.sh graph --file <path> [--standalone]` |
 | Print the state directory | `common-ground.sh path` |
 
-All commands accept `--project <name>` to override the session binding.
+`--project <name>` is accepted only when no session is bound (see above).
 
-Writes are atomic — the script writes a `.tmp` alongside and `os.replace`s it, so
-an interrupted run cannot leave a half-written index or a truncated ground file.
+Unknown options are rejected per command — a typo like `--teir` fails loudly
+rather than being silently ignored.
+
+**Atomicity, precisely.** `ground.index.json` and `COMMON-GROUND.md` are each
+written to a `.tmp` and `os.replace`d, so neither file can be observed
+half-written or truncated. They are two separate replacements, so a run killed
+between them can leave the markdown one revision behind the index — `render`
+fixes that, and the index is the source of truth either way. Archive files and
+`REASONING.mermaid` are written directly. A killed run can leave a `.tmp` beside
+the index in a tracked directory; delete it and re-run.
 
 ---
 
@@ -145,10 +169,15 @@ an interrupted run cannot leave a half-written index or a truncated ground file.
 | Scenario | Behaviour | Exit |
 |----------|-----------|------|
 | No project bound and no `--project` | Message pointing at `select-project.sh` | 1 |
-| Project not in the registry | Rejected by name | 1 |
+| `--project` contradicts the session binding | Refused as cross-project access | 1 |
+| Project not in the registry (incl. traversal attempts) | Rejected by name | 1 |
 | Command run before `init` | Message pointing at `init` | 1 |
 | Unknown assumption ID | Rejected | 1 |
-| Bad command, type, tier, or missing required option | Usage message | 2 |
+| `graph` with no assumptions yet | Refused — never graph unconfirmed premises | 1 |
 | Mermaid file missing | Rejected | 1 |
+| Corrupted `ground.index.json` | Named error naming the parse fault, with the repair instruction | 1 |
+| No command, bad command, unknown option, bad type/tier, missing required option | Usage message | 2 |
 | Mermaid not starting `flowchart` | Rejected | 2 |
-| Corrupted `ground.index.json` | Repair the JSON, then `render` to rebuild the markdown | — |
+
+`|` and newlines inside any recorded value are escaped when the markdown is
+generated, so a stray pipe in a reason cannot break the History table.
