@@ -1,7 +1,14 @@
-- [ ] 2026-07-25 **OWNER ACTION — common-ground gate rows are still a PROPOSAL.** Promote with:
+- [ ] 2026-08-17 **OWNER ACTION — common-ground gate rows are STILL a PROPOSAL.** PR #21 was
+      squash-merged (origin/main 025c657) and the capability is live, but **the merge did not
+      promote the gate proposal** — verified: `_proposals/2026-07-25T08-46-44-gate-map.md` is still
+      there and `gate-map.md` is byte-unchanged. That is by design; the `git mv` is a separate
+      manual act and IS the approval signal. Until it happens the action is unlisted and resolves
+      to HARD, so every assumption write prompts. Promote with:
       `git mv automate-dev-suite/gates/_proposals/2026-07-25T08-46-44-gate-map.md automate-dev-suite/gates/gate-map.md`
-      (that git mv IS the approval). Until then the action is unlisted and resolves to HARD, so
-      every assumption write prompts. Kingdom PR #21 open for review; additive only.
+- [x] 2026-08-17: common-ground integration MERGED (PR #21 → origin/main 025c657); source branch
+      auto-deleted by GitHub, local main ff-pulled. Skill + `scripts/common-ground.sh` + workflow +
+      port record `docs/build/003-common-ground-port.md` all live. Additive only — `gate-map.md`,
+      `settings.json`, every hook and pre-existing script/skill/workflow byte-identical.
 - [ ] 2026-07-25 **OWNER ACTION (HARD — guard code).** `sandbox-guard.py:80` Bash arm does not
       protect `.orchestrator/projects/state/{p}/…`: the regex matches non-overlapping, consumes
       `projects/state` and captures `"state"`, so cross-project Bash access is never denied there
