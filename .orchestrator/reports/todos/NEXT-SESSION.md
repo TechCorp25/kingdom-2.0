@@ -1,3 +1,16 @@
+- [ ] 2026-07-25 **OWNER ACTION — common-ground gate rows are still a PROPOSAL.** Promote with:
+      `git mv automate-dev-suite/gates/_proposals/2026-07-25T08-46-44-gate-map.md automate-dev-suite/gates/gate-map.md`
+      (that git mv IS the approval). Until then the action is unlisted and resolves to HARD, so
+      every assumption write prompts. Kingdom PR #21 open for review; additive only.
+- [ ] 2026-07-25 **OWNER ACTION (HARD — guard code).** `sandbox-guard.py:80` Bash arm does not
+      protect `.orchestrator/projects/state/{p}/…`: the regex matches non-overlapping, consumes
+      `projects/state` and captures `"state"`, so cross-project Bash access is never denied there
+      (`projects/{p}/…` still works). File-tool arm is fine. `memory-promote.sh:12` has the same
+      `--project` exposure. `common-ground.sh` self-enforces the binding as mitigation. Fixing the
+      guard is HARD-gated — owner's call. Detail: `docs/build/003-common-ground-port.md`.
+- [ ] 2026-07-25 (kingdom hygiene): DD-001:56 says `boundary-verify.sh` runs at kingdom bootstrap
+      and session end — NOT implemented in either workflow (only new-project/adopt-project/
+      bootstrap-machine invoke it). Either wire it in or correct DD-001.
 - [x] 2026-07-21: v1 salvage COMPLETE (#11 mitigations, #13 backup/playbooks/identity); owner-only-merge policy live (#10)
 - [x] 2026-07-23: live-wire validation PASSED (pin-force session) — session-start injection, sandbox guard, gates-guard, gate-record, memory-promote, boundary-verify all fired correctly; no misfires observed
 - [x] 2026-07-23: pin-force governance docs triage — assessed + sorted ~25 dropped docs into GS-000 taxonomy; PR #5 squash-merged (origin/main b5d1b8f). GS-001 finalised as approved standard w/ real SHA binding (standards/SHA256SUMS)
