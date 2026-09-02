@@ -5,14 +5,19 @@ before any compaction. Promoted to project memory at session end.
 
 ## Intent
 
-{next session — Session 02: migrate the Babel-standalone prototype into the Vite
-app at `apps/web/app/`. See the roadmap, or the owner's fresh goals.}
+{next session — **Session 02: Web — Babel-standalone → Vite + React + TS migration**,
+to feature parity. Migration only; no new product scope. Or the owner's fresh goals.}
 
 ## Goals file
 
-No pre-authored plan for Session 02 yet. Roadmap:
-`.orchestrator/projects/tasks/studio-suite/session-goals/00-ROADMAP-first-sessions.md`.
-Create the plan at bootstrap (`session-goals.sh --create s02-<slug>`) or ask the owner.
+`.orchestrator/projects/tasks/studio-suite/session-goals/2026-07-24T09-56-session-02-web-vite-migration.md`
+(roadmap: `.../session-goals/00-ROADMAP-first-sessions.md`) — pre-authored at S01 close.
+If starting on a LATER date, re-date the plan file (or `session-goals.sh --create`) so
+project-bootstrap auto-selects it.
+
+**First decision of S02 (blocks the rest):** reconcile the directory layout — the S01
+Vite root is `apps/web/app/` while the prototype sources are `apps/web/src/**`. Options
+and a recommendation are in the plan.
 
 ## Branch
 
